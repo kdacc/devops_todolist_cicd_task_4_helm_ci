@@ -87,10 +87,10 @@ jobs:
         context: ./src
         tags: ${{ secrets.DOCKERHUB_USERNAME }}/${{ env.DockerImageName }}:${{ github.sha }}
 
-  helm_ci:
+  helm-ci:
     runs-on: ubuntu-latest
     needs: python-ci
-    if: github.ref_name == 'kdacc'
+    if: github.ref_name == 'kdacc' || github.head_ref == 'kdacc'
     steps:
 
       - uses: actions/download-artifact@v4
